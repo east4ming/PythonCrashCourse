@@ -1,0 +1,14 @@
+def build_profile(first, last, **user_info):
+    """创建一个字典, 其中包含我们知道的有关用户的一切."""
+    profile = {}
+    profile['first_name'] = first
+    profile['last_name'] = last
+    for k, v in user_info.items():
+        profile[k] = v
+    return profile
+
+my_profile = build_profile('Casey', 'Tsui',
+                             location='Shanghai',
+                             field='Ops',
+                             wedding=True)
+print(my_profile)

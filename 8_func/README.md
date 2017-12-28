@@ -27,7 +27,6 @@ hello_world()
 
 **注意: 由默认值的形参放在无默认值的形参之后**
 
-<<<<<<< HEAD
 ## 返回值
 
 `return` 返回值
@@ -42,9 +41,7 @@ hello_world()
 
 ### 结合使用函数和 while 循环
 
-=======
 ## 传递列表
->>>>>>> eaa03dab4404a64ca40ffe85d5b8315a1c215b0e
 
 ### 在函数中修改列表
 
@@ -69,4 +66,97 @@ Python 允许函数从调用语句中收集任意数量的实参.
 
 ### 结合使用位置实参和任意数量实参
 
-必须将**接纳任意数量实参的x
+必须将**接纳任意数量实参的形参放在最后**. 
+Python**先匹配为知实参和关键字实参**, 再将余下的实参都收集到最后一个形参中.
+
+> 见`b_make_pizza.py` (以后都用这种写法, `b`指的是book里的内容, `e`开头指的是练习.)
+
+### 使用任意数量的关键字实参
+
+> 见`b_user_profile.py`
+> 形参`**user_info`中的两个星号让Python创建一个名为user_info的空字典, 并将收到的所有 名称-值 对都封装到这个字典中. 
+
+## 将函数存储在模块中
+
+可以将函数存储在被称为*模块*的独立文件中, 再将模块导入`import`主程序.
+这样做可以: 
+- 隐藏程序代码细节, 讲重点放在程序的高层逻辑上.
+- 在众多不同的程序中重用函数
+- 可与其他人共享相关的模块
+
+### 导入整个模块
+
+> 见`b_8_6_1`
+> `import pizza`让python打开文件`pizza.py`, 并将其中的所有函数都复制到这个程序中.
+> 这样, 在`makding_pizzas.py`中, 可以使用`pizza.py`中定义的所有函数.
+> 要调用被导入的模块中的函数, 可指定导入的模块的名称pizza和函数名make_pizza(), 并用点号分隔.
+> 即`module_name.function_name()`
+
+### 导入特定函数
+
+```python
+from module_name import function_name
+from module_name import function_0, function_1, function_2
+
+from pizza import make_pizza
+
+make_pizza(16, 'pepperoni')
+```
+
+### 使用`as`给函数指定别名
+
+如有有以下情况:
+- 导入函数名称与程序中现有的名称冲突
+- 函数的名称太长
+可指定*别名* - 函数的另一个名称, 类似于外号. 
+
+```python
+from module_name import function_name as fn
+
+from pizza import make_pizza as mp
+
+mp(16, 'pepperoni')
+```
+
+### 使用`as`给模块指定别名
+
+```python
+import module_name as mn
+
+import pizza as p
+
+p.make_pizza(16, 'pepperoni')
+```
+
+### 导入模块中的所有函数
+
+```python
+from pizza import *
+
+make_pizza(16, 'pepperoni')
+```
+
+此时无需使用句点表示法.
+然而, 使用非自己编写的大型模块时, 最好**不要**采用这种导入方法. (可能重名, 导致意想不到的结果)
+**建议的方法**:
+- 只导入你需要使用的函数
+- 导入整个模块并使用句点表示法
+
+## 函数编写指南
+
+- 函数名称: 描述性名称, 只使用**小写字母**和**下划线**
+- 模块名称: 同上
+- 每个函数都应包含简要地阐述其功能的注释, 该注释**紧跟在函数定义的后面**, 并采用**文档字符串格式**
+- 给形参指定默认值时, 等号两边**不要有空格**
+- 对于函数调用的关键字实参, 也是如此.
+- 代码行的长度不要超过**79**字符
+- 如果超过, 可以换行并缩进. 如下:
+    ```python
+    def function_name(
+            parameter_0, parameter_1, parameter_2,
+            parameter_3, parameter_4, parameter_5):
+        function body...
+    ```
+- 如果程序或模块包含多个函数, 看使用**两个空行**将相邻的函数分开
+- 所有的`import`语句都应该放在文件开头, 唯一例外的情形是, 在文件开头使用了注释来描述整个程序
+    `#!/usr/bin/env python`

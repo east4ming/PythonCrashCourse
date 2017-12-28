@@ -1,4 +1,4 @@
-"""Great Magicians.
+"""Unchange Magicians.
 
 创建一个魔术师名字的列表, 并打印.
 修改该列表, 都加上"the Great"前缀.
@@ -10,10 +10,13 @@ def show_magicians(magicians):
 
 def make_great(magicians):
     """Make Great Magicians."""
-    length = len(magicians)
-    for i in range(length):
-        magicians[i] = 'the Great ' + magicians[i]
+    great_magicians = []
+    for magician in magicians:
+        magician = 'the Great ' + magician
+        great_magicians.append(magician)
+    return great_magicians
 
 magicians = ['zhaoyi', 'qianer', 'sunsan', 'lisi']
-make_great(magicians)
+great_magicians = make_great(magicians)
 show_magicians(magicians)
+show_magicians(great_magicians)

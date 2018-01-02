@@ -45,3 +45,31 @@ my_dog.roll_over()
 - 通过方法修改属性值
 - 通过方法对属性值进行递增
 
+## 继承
+
+一个类继承自另一个类时, 它将自动获得该类的所有方法和属性, 原有的类称为**父类**. 而新类称为**子类**.
+子类继承父类的所有属性和方法, 同时还有自己的属性和方法. 
+
+### 子类的 __init__()
+
+> 见`b_electric_car.py`
+
+### Python 2.7中的继承
+
+```python
+class Car(Object):
+    pass
+
+class ElectricCar(Car):
+    def __init__(self, make, model, year):
+        super(ElectricCar, self).__init__(make, model, year):
+        pass
+```
+
+### 重写父类的方法
+
+> 见`b_electric_car.py`
+
+### 将实例用作属性
+
+> 见`b_electric_car_2.py`
